@@ -13,6 +13,7 @@
 
 - (지난 달에 결정했던) 이번 달 주제에 대해서, 각자가 맡은 주제에 대해서 8개의 문제를 가져옵니다.
 - 문제 풀이 사이트는 [백준 온라인 저지](https://www.acmicpc.net/), [프로그래머스](https://programmers.co.kr/learn/challenges), [Leetcode](https://leetcode.com/explore/), [hackerrank (KAKAO interview site)](https://www.hackerrank.com/dashboard), [codility (NaverCorp interview site)](https://www.codility.com/) 중에서 취향대로 선정합니다.
+- 다만 8문제 중에서 **3~5문제는 백준**에서 선정합니다 _(Updated 22.03.05)_
 - 8개 문제에 대해서 대략적인 문제 난이도를 표기합니다.
 - 이제 8개 문제 중에서 본인이 풀고 싶은 문제를 **2문제** 골라서 풀어주시면 됩니다! 
 
