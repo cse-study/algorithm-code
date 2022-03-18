@@ -52,7 +52,10 @@ class Stack {
      * X: 정수 X를 스택에 넣는 연산이다.
      * @param input
      */
-    public void push(int input) {
+    public void push(int value) {
+        StackItem newItem = new StackItem(value, topItem);
+        size += 1;
+        topItem = newItem;
     }
 
     /**
@@ -84,7 +87,9 @@ class Stack {
      * @return
      */
     public int top() {
-        return 3;
+        return this.empty()
+            ? -1 
+            : this.topItem.getValue();
     }
 }
 
@@ -92,11 +97,13 @@ class StackItem {
     private int value;
     private StackItem prevItem;
 
-    public int getValue() {
-        return value;
+    public StackItem(int value, StackItem prevItem) {
+        this.value = value;
+        this.prevItem = prevItem;
     }
 
-    public void pushItem(int value, StackItem prevItem) {
+    public int getValue() {
+        return value;
     }
 
     public StackItem popItem() {
