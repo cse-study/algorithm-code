@@ -25,7 +25,7 @@ public class App {
                     System.out.println( stack.size() );
                     break;
                 case "empty":
-                    System.out.println( stack.empty() );
+                    System.out.println( stack.empty() ? "1" : "0" );
                     break;
                 case "top":
                     System.out.println( stack.top() );
@@ -48,21 +48,41 @@ class Stack {
         this.topItem = null;
     }
 
+    /**
+     * X: 정수 X를 스택에 넣는 연산이다.
+     * @param input
+     */
     public void push(int input) {
     }
 
+    /**
+     * 스택에서 가장 위에 있는 정수를 빼고, 그 수를 출력한다. 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+     * @return
+     */
     public int pop() {
         return 0;
     }
 
+    /**
+     * 스택에 들어있는 정수의 개수를 출력한다.
+     * @return
+     */
     public int size() {
-        return 1;
+        return this.size;
     }
 
-    public int empty() {
-        return 2;
+    /**
+     * 스택이 비어있으면 1, 아니면 0을 출력한다.
+     * @return
+     */
+    public boolean empty() {
+        return this.size == 0;
     }
 
+    /**
+     * 스택의 가장 위에 있는 정수를 출력한다. 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+     * @return
+     */
     public int top() {
         return 3;
     }
