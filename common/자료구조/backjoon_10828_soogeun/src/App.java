@@ -54,8 +54,8 @@ class Stack {
      */
     public void push(int value) {
         StackItem newItem = new StackItem(value, topItem);
-        size += 1;
-        topItem = newItem;
+        this.size += 1;
+        this.topItem = newItem;
     }
 
     /**
@@ -63,7 +63,17 @@ class Stack {
      * @return
      */
     public int pop() {
-        return 0;
+        if (this.empty()) {
+            return -1;
+        }
+        else {
+            int popValue = this.topItem.getValue();
+            StackItem prevItem = this.topItem.getPrevItem();
+            this.topItem = null;
+            this.topItem = prevItem;
+            this.size -= 1;
+            return popValue;
+        }
     }
 
     /**
@@ -103,10 +113,10 @@ class StackItem {
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
-    public StackItem popItem() {
-        return prevItem;
+    public StackItem getPrevItem() {
+        return this.prevItem;
     }
 }
