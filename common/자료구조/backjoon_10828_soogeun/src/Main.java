@@ -2,12 +2,12 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class App {
+public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int lineCounts = Integer.parseInt(br.readLine());
 
-        Stack stack = new Stack();
+        SooStack stack = new SooStack();
 
         for (int i = 0; i < lineCounts; i++) {
             String command = br.readLine();
@@ -39,11 +39,11 @@ public class App {
     }
 }
 
-class Stack {
+class SooStack {
     private int size;
     private StackItem topItem;
 
-    public Stack() {
+    public SooStack() {
         this.size = 0;
         this.topItem = null;
     }
