@@ -58,10 +58,31 @@ class Editor {
         return text;
     }
 
-    public void moveCursorLeft() {}
-    public void moveCursorRight() {}
-    public void deleteChar() {}
-    public void inputChar() {}
+    public void moveCursorLeft() {
+        if ( this.isLeftMost() )
+            return;
+        this.cursorIdx -= 1;
+        return;
+    }
+
+    public void moveCursorRight() {
+        if ( this.isRightMost() )
+            return;
+        this.cursorIdx += 1;
+        return;
+    }
+
+    public void deleteChar() {
+        if ( this.isLeftMost() )
+            return;
+        this.text = this.text.substring(0, cursorIdx - 1) + this.text.substring(cursorIdx);
+        this.cursorIdx -= 1;
+        return;
+    }
+    public void inputChar(char c) {
+        this.text = this.text.substring(0, cursorIdx) + c + this.text.substring(cursorIdx);
+        return;
+    }
 
     private boolean isLeftMost() {
         return this.cursorIdx == 0;
