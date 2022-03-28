@@ -1,10 +1,14 @@
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Stack;
 
-public class MainTimeFailed {
+public class UseStack {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         String initialString = br.readLine();
         Editor editor = new Editor(initialString);
         int numOfCommandLines = Integer.parseInt(br.readLine());
@@ -41,55 +45,67 @@ public class MainTimeFailed {
             }
         }
 
-        System.out.println(editor.getText());
+        bw.write(editor.getText() + "\n");
+
         br.close();
+        bw.flush();
+        bw.close();
     }
 }
 
 class Editor {
-    private String text;    // 만약 문자열 이외의 item을 담는 editor였다면, LinkedList를 이용했어야 할 듯
-    private int cursorIdx;
+    private Stack<Character> leftText;     // cursor의 왼쪽 text 영역
+    private Stack<Character> rightText;    // cursor의 오른쪽 text 영역
 
     public Editor (String text) {
-        this.text = text;
-        this.cursorIdx = text.length();
+        leftText = new Stack<Character>();
+        rightText = new Stack<Character>();
+        for (char c : text.toCharArray()) {
+            leftText.push(c);
+        }
     }
 
     public String getText() {
+        String text = "";
+        while (!this.leftText.empty()) {
+            this.rightText.push(this.leftText.pop());
+        }
+        while (!this.rightText.empty()) {
+            text = text + this.rightText.pop();
+        }
+
         return text;
     }
 
     public void moveCursorLeft() {
         if ( this.isLeftMost() )
             return;
-        this.cursorIdx -= 1;
+        this.rightText.push(this.leftText.pop());
         return;
     }
 
     public void moveCursorRight() {
         if ( this.isRightMost() )
             return;
-        this.cursorIdx += 1;
+        this.leftText.push(this.rightText.pop());
         return;
     }
 
     public void deleteChar() {
         if ( this.isLeftMost() )
             return;
-        this.text = this.text.substring(0, cursorIdx - 1) + this.text.substring(cursorIdx);
-        this.cursorIdx -= 1;
+        this.leftText.pop();
         return;
     }
     public void inputChar(char c) {
-        this.text = this.text.substring(0, cursorIdx) + c + this.text.substring(cursorIdx);
-        this.cursorIdx += 1;
+        this.leftText.push(c);
         return;
     }
 
     private boolean isLeftMost() {
-        return this.cursorIdx == 0;
+        return this.leftText.isEmpty();
     }
     private boolean isRightMost() {
-        return this.cursorIdx == this.text.length();
+        return this.rightText.isEmpty();
     }
 }
