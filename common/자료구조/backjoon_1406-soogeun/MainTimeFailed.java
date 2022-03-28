@@ -2,11 +2,11 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Main {
+public class MainTimeFailed {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String initialString = br.readLine();
-        System.out.println(initialString);
+        Editor editor = new Editor(initialString);
         int numOfCommandLines = Integer.parseInt(br.readLine());
 
         for(int i = 0; i < numOfCommandLines; i++) {
@@ -18,22 +18,22 @@ public class Main {
 
             switch( command ) {
                 case "L":
-                    System.out.println("command is " + command);
+                    editor.moveCursorLeft();;
                     break;
 
                 case "D":
-                    System.out.println("command is " + command);
+                    editor.moveCursorRight();
                     break;
 
                 case "B":
-                    System.out.println("command is " + command);
+                    editor.deleteChar();
                     break;
 
                 case "P":
                     assert arguments.length == 2: invaildCommandError;
-                    String inputLetter = arguments[1];
-                    assert inputLetter.length() == 1: invaildCommandError;
-                    System.out.println("command is " + command + " " + arguments[1]);
+                    assert arguments[1].length() == 1: invaildCommandError;
+                    char inputLetter = arguments[1].charAt(0);
+                    editor.inputChar(inputLetter);
                     break;
 
                 default:
@@ -41,6 +41,7 @@ public class Main {
             }
         }
 
+        System.out.println(editor.getText());
         br.close();
     }
 }
@@ -81,6 +82,7 @@ class Editor {
     }
     public void inputChar(char c) {
         this.text = this.text.substring(0, cursorIdx) + c + this.text.substring(cursorIdx);
+        this.cursorIdx += 1;
         return;
     }
 
