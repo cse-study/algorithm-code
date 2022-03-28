@@ -1,7 +1,46 @@
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String initialString = br.readLine();
+        System.out.println(initialString);
+        int numOfCommandLines = Integer.parseInt(br.readLine());
+
+        for(int i = 0; i < numOfCommandLines; i++) {
+            String commandLine = br.readLine();
+            String[] arguments = commandLine.split(" ");
+            String command = arguments[0];
+
+            String invaildCommandError = "command is invalid.";     // Error Message
+
+            switch( command ) {
+                case "L":
+                    System.out.println("command is " + command);
+                    break;
+
+                case "D":
+                    System.out.println("command is " + command);
+                    break;
+
+                case "B":
+                    System.out.println("command is " + command);
+                    break;
+
+                case "P":
+                    assert arguments.length == 2: invaildCommandError;
+                    String inputLetter = arguments[1];
+                    assert inputLetter.length() == 1: invaildCommandError;
+                    System.out.println("command is " + command + " " + arguments[1]);
+                    break;
+
+                default:
+                    throw new Error(invaildCommandError);
+            }
+        }
+
+        br.close();
     }
 }
