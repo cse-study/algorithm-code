@@ -1,3 +1,9 @@
+/**
+ * 하나의 문자열과 index를 의미하는 cursor를 이용하여 구현
+ * 하지만 String의 내장 method를 사용할 때, time complexity가 높아서 
+ * 시간 효용성에서 Fail 되었습니다.
+ */
+
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

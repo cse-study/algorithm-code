@@ -5,10 +5,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Stack;
 
-public class UseStack {
+public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder stringBuilder = new StringBuilder();
+
         String initialString = br.readLine();
         Editor editor = new Editor(initialString);
         int numOfCommandLines = Integer.parseInt(br.readLine());
@@ -45,7 +47,7 @@ public class UseStack {
             }
         }
 
-        bw.write(editor.getText() + "\n");
+        bw.write(editor.getText(stringBuilder) + "\n");
 
         br.close();
         bw.flush();
@@ -65,16 +67,16 @@ class Editor {
         }
     }
 
-    public String getText() {
-        String text = "";
+    public String getText(StringBuilder stringBuilder) {
+        // string builder를 인자로 받았지만, 여기서 선언해서 사용해도 됩니다.
         while (!this.leftText.empty()) {
             this.rightText.push(this.leftText.pop());
         }
         while (!this.rightText.empty()) {
-            text = text + this.rightText.pop();
+            stringBuilder.append(this.rightText.pop());
         }
 
-        return text;
+        return stringBuilder.toString();
     }
 
     public void moveCursorLeft() {
