@@ -44,3 +44,29 @@ public class Main {
         br.close();
     }
 }
+
+class Editor {
+    private String text;    // 만약 문자열 이외의 item을 담는 editor였다면, LinkedList를 이용했어야 할 듯
+    private int cursorIdx;
+
+    public Editor (String text) {
+        this.text = text;
+        this.cursorIdx = text.length();
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void moveCursorLeft() {}
+    public void moveCursorRight() {}
+    public void deleteChar() {}
+    public void inputChar() {}
+
+    private boolean isLeftMost() {
+        return this.cursorIdx == 0;
+    }
+    private boolean isRightMost() {
+        return this.cursorIdx == this.text.length();
+    }
+}
