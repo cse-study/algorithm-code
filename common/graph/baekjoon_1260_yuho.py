@@ -67,7 +67,7 @@ class BFS(object):
         idx = start_idx
 
         while self.queue:
-            self.queue.pop(0)       # 대기열에서 현재 탐샥중인 노드 번호 제거
+            self.queue.pop(0)       # 대기열에서 현재 탐색중인 노드 번호 제거
             self.result.append(idx)
 
             # 인접 노드 중에서 아직 방문하지 않은 노드를 대기열에 추가
