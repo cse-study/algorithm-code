@@ -27,7 +27,7 @@ class Algorithm {
         int max_weight;
 
     public:
-    Algorithm(int, int*);
+        Algorithm(int, int*);
         int GetMaxTolerableWeight();
 };
 
@@ -44,7 +44,7 @@ Algorithm::Algorithm(int N, int* rope) {
 int Algorithm::GetMaxTolerableWeight() {
     for(int i = 0; i < num_rope; i++) {
         int num_use = i + 1;    // 사용하는 로프 개수
-        int cur_weight = arr_rope[num_rope - num_use] * num_use;    // 제일 약한 로프 k개 사용 시 들 수 있는 무게
+        int cur_weight = arr_rope[num_rope - num_use] * num_use;    // 로프 k개 사용 시 들 수 있는 무게
 
         if(cur_weight > max_weight){
             max_weight = cur_weight;
