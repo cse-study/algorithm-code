@@ -12,3 +12,8 @@ function solution(A, K) {
 
     return result;
 }
+
+/**
+ * 인사이트
+ * array 복사는 spread operator 이용하기 !
+ */
